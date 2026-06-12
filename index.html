@@ -12,88 +12,55 @@ body {
   color: white;
 }
 
-/* LAYOUT PRINCIPAL */
-.app {
-  display: flex;
-  height: 100vh;
-}
-
-/* SIDEBAR */
-.sidebar {
-  width: 220px;
+/* topo */
+.header {
   background: #000;
   padding: 20px;
-}
-
-.logo {
-  color: #1db954;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 20px;
+  color: #1db954;
 }
 
-/* PLAYLIST */
+/* lista */
+.container {
+  padding: 15px;
+}
+
 .song {
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
   background: #181818;
-  transition: 0.3s;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .song:hover {
   background: #282828;
 }
 
-/* PLAYER PRINCIPAL */
-.main {
-  flex: 1;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.cover {
-  width: 250px;
-  height: 250px;
-  border-radius: 12px;
+.song img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  margin-right: 10px;
   object-fit: cover;
-  box-shadow: 0 10px 30px black;
 }
 
 .title {
-  margin-top: 15px;
-  font-size: 22px;
+  font-size: 16px;
 }
 
-.artist {
+.sub {
+  font-size: 12px;
   color: #aaa;
-  margin-bottom: 20px;
 }
 
-/* CONTROLES */
-.controls {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-button {
-  background: #1db954;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-/* PLAYER OCULTO */
+/* player invisível */
 iframe {
-  width: 0;
-  height: 0;
+  width: 1px;
+  height: 1px;
   opacity: 0;
 }
 </style>
@@ -101,88 +68,44 @@ iframe {
 
 <body>
 
-<div class="app">
+<div class="header">
+🎧 Nosso Spotify
+</div>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <div class="logo">🎧 Nosso Spotify</div>
+<div class="container">
 
-    <div class="song" onclick="playSong(0)">Nosso começo ❤️</div>
-    <div class="song" onclick="playSong(1)">Momentos juntos 🌹</div>
-    <div class="song" onclick="playSong(2)">Você é meu lar ❤️</div>
-
+  <div class="song" onclick="play('foto1.jpg','Nosso começo ❤️','https://www.youtube.com/embed/hh9WgYHRuhU?autoplay=1')">
+    <img src="foto1.jpg">
+    <div>
+      <div class="title">Nosso começo ❤️</div>
+      <div class="sub">Toque para ouvir</div>
+    </div>
   </div>
 
-  <!-- MAIN -->
-  <div class="main">
-
-    <img id="cover" class="cover" src="foto1.jpg">
-
-    <div class="title" id="title">Nosso começo ❤️</div>
-    <div class="artist">Playlist especial</div>
-
-    <div class="controls">
-      <button onclick="prev()">⏮</button>
-      <button onclick="toggle()">▶/⏸</button>
-      <button onclick="next()">⏭</button>
+  <div class="song" onclick="play('foto2.jpg','Momentos especiais 🌹','https://www.youtube.com/embed/dhYOPzcsbGM?autoplay=1')">
+    <img src="foto2.jpg">
+    <div>
+      <div class="title">Momentos especiais 🌹</div>
+      <div class="sub">Toque para ouvir</div>
     </div>
+  </div>
 
+  <div class="song" onclick="play('foto3.jpg','Você é meu lugar ❤️','https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1')">
+    <img src="foto3.jpg">
+    <div>
+      <div class="title">Você é meu lugar ❤️</div>
+      <div class="sub">Toque para ouvir</div>
+    </div>
   </div>
 
 </div>
 
-<!-- PLAYER -->
 <iframe id="player" allow="autoplay"></iframe>
 
 <script>
-const songs = [
-  {
-    img: "foto1.jpg",
-    title: "Nosso começo ❤️",
-    music: "https://www.youtube.com/embed/hh9WgYHRuhU?autoplay=1"
-  },
-  {
-    img: "foto2.jpg",
-    title: "Momentos juntos 🌹",
-    music: "https://www.youtube.com/embed/dhYOPzcsbGM?autoplay=1"
-  },
-  {
-    img: "foto3.jpg",
-    title: "Você é meu lar ❤️",
-    music: "https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1"
-  }
-];
-
-let current = 0;
-
-function loadSong() {
-  document.getElementById("cover").src = songs[current].img;
-  document.getElementById("title").innerText = songs[current].title;
-  document.getElementById("player").src = songs[current].music;
+function play(img, title, music) {
+  document.getElementById("player").src = music;
 }
-
-function playSong(i) {
-  current = i;
-  loadSong();
-}
-
-function next() {
-  current++;
-  if (current >= songs.length) current = 0;
-  loadSong();
-}
-
-function prev() {
-  current--;
-  if (current < 0) current = songs.length - 1;
-  loadSong();
-}
-
-function toggle() {
-  document.getElementById("player").src = songs[current].music;
-}
-
-loadSong();
 </script>
 
 </body>
