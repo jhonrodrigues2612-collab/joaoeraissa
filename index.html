@@ -1,112 +1,355 @@
+```html
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Nosso Spotify ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>João & Raissa ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #121212;
-  color: white;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
 }
 
-/* topo */
-.header {
-  background: #000;
-  padding: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #1db954;
+body{
+background:#121212;
+color:white;
 }
 
-/* lista */
-.container {
-  padding: 15px;
+.spotify{
+display:flex;
+min-height:100vh;
 }
 
-.song {
-  display: flex;
-  align-items: center;
-  background: #181818;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  cursor: pointer;
+.sidebar{
+width:260px;
+background:#000;
+padding:30px;
+position:fixed;
+height:100%;
 }
 
-.song:hover {
-  background: #282828;
+.logo{
+font-size:30px;
+font-weight:800;
+margin-bottom:40px;
+color:#1DB954;
 }
 
-.song img {
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
-  margin-right: 10px;
-  object-fit: cover;
+.sidebar ul{
+list-style:none;
 }
 
-.title {
-  font-size: 16px;
+.sidebar li{
+padding:12px 0;
+color:#b3b3b3;
+font-size:18px;
 }
 
-.sub {
-  font-size: 12px;
-  color: #aaa;
+.content{
+margin-left:260px;
+width:100%;
+padding:40px;
+background:linear-gradient(to bottom,#5a0017,#121212 35%);
 }
 
-/* player invisível */
-iframe {
-  width: 1px;
-  height: 1px;
-  opacity: 0;
+.header{
+display:flex;
+gap:30px;
+align-items:end;
+flex-wrap:wrap;
 }
+
+.capa{
+width:300px;
+height:300px;
+object-fit:cover;
+border-radius:12px;
+box-shadow:0 20px 40px rgba(0,0,0,.5);
+}
+
+.info h1{
+font-size:60px;
+margin-bottom:10px;
+}
+
+.info p{
+color:#ddd;
+}
+
+.play{
+margin-top:25px;
+background:#1DB954;
+color:white;
+border:none;
+padding:15px 40px;
+border-radius:50px;
+font-size:18px;
+font-weight:700;
+}
+
+.secao{
+margin-top:60px;
+}
+
+.secao h2{
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.album{
+background:#181818;
+padding:15px;
+border-radius:15px;
+transition:.3s;
+}
+
+.album:hover{
+transform:translateY(-5px);
+}
+
+.album img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.album h3{
+margin-top:10px;
+}
+
+.album p{
+color:#b3b3b3;
+font-size:14px;
+margin-top:5px;
+}
+
+.carta{
+background:#181818;
+padding:25px;
+border-radius:15px;
+line-height:1.9;
+}
+
+.contador{
+font-size:28px;
+font-weight:700;
+color:#1DB954;
+}
+
+footer{
+text-align:center;
+padding:50px;
+color:#b3b3b3;
+}
+
+@media(max-width:900px){
+
+.sidebar{
+display:none;
+}
+
+.content{
+margin-left:0;
+}
+
+.info h1{
+font-size:38px;
+}
+
+.capa{
+width:100%;
+max-width:320px;
+height:auto;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="spotify">
+
+<div class="sidebar">
+
+<div class="logo">
+🎵 Spotify
+</div>
+
+<ul>
+<li>🏠 Início</li>
+<li>❤️ João & Raissa</li>
+<li>🎶 Um Amor Puro</li>
+<li>📀 Nossos Álbuns</li>
+<li>💌 Carta</li>
+</ul>
+
+</div>
+
+<div class="content">
+
 <div class="header">
-🎧 Nosso Spotify
-</div>
 
-<div class="container">
+<img class="capa"
+src="WhatsApp Image 2026-06-12 at 09.47.09.jpeg">
 
-  <div class="song" onclick="play('foto1.jpg','Nosso começo ❤️','https://www.youtube.com/embed/hh9WgYHRuhU?autoplay=1')">
-    <img src="foto1.jpg">
-    <div>
-      <div class="title">Nosso começo ❤️</div>
-      <div class="sub">Toque para ouvir</div>
-    </div>
-  </div>
+<div class="info">
 
-  <div class="song" onclick="play('foto2.jpg','Momentos especiais 🌹','https://www.youtube.com/embed/dhYOPzcsbGM?autoplay=1')">
-    <img src="foto2.jpg">
-    <div>
-      <div class="title">Momentos especiais 🌹</div>
-      <div class="sub">Toque para ouvir</div>
-    </div>
-  </div>
+<p>PLAYLIST EXCLUSIVA</p>
 
-  <div class="song" onclick="play('foto3.jpg','Você é meu lugar ❤️','https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1')">
-    <img src="foto3.jpg">
-    <div>
-      <div class="title">Você é meu lugar ❤️</div>
-      <div class="sub">Toque para ouvir</div>
-    </div>
-  </div>
+<h1>João & Raissa ❤️</h1>
+
+<p>
+Cada momento ao seu lado é minha música favorita.
+</p>
+
+<br>
+
+<p>
+🎶 Um Amor Puro — Djavan
+</p>
+
+<button class="play">
+▶ PLAY
+</button>
 
 </div>
 
-<iframe id="player" allow="autoplay"></iframe>
+</div>
+
+<div class="secao">
+
+<h2>❤️ Tempo juntos</h2>
+
+<div class="contador" id="contador"></div>
+
+</div>
+
+<div class="secao">
+
+<h2>📀 Nossos Álbuns</h2>
+
+<div class="grid">
+
+<div class="album">
+<img src="WhatsApp Image 2026-06-12 at 09.47.09 (1).jpeg">
+<h3>Flores Para Você</h3>
+<p>Porque você merece todo amor do mundo.</p>
+</div>
+
+<div class="album">
+<img src="WhatsApp Image 2026-06-12 at 09.47.08 (4).jpeg">
+<h3>Nossa Vibe</h3>
+<p>Música, sorrisos e você.</p>
+</div>
+
+<div class="album">
+<img src="WhatsApp Image 2026-06-12 at 09.47.08 (3).jpeg">
+<h3>Refúgio</h3>
+<p>Meu lugar favorito é ao seu lado.</p>
+</div>
+
+<div class="album">
+<img src="WhatsApp Image 2026-06-12 at 09.47.08 (2).jpeg">
+<h3>Nosso Destino</h3>
+<p>O melhor ainda está por vir.</p>
+</div>
+
+<div class="album">
+<img src="WhatsApp Image 2026-06-12 at 09.47.08 (1).jpeg">
+<h3>Pra Sempre</h3>
+<p>Cada capítulo vale a pena.</p>
+</div>
+
+<div class="album">
+<img src="WhatsApp Image 2026-06-12 at 09.47.08.jpeg">
+<h3>Memórias</h3>
+<p>Momentos que guardarei para sempre.</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="secao">
+
+<h2>💌 Carta Para Raissa</h2>
+
+<div class="carta">
+
+Meu amor,
+
+Desde o dia 19/06/2025 minha vida ficou mais bonita.
+
+Obrigado por cada sorriso, cada abraço, cada conversa e cada momento que vivemos juntos.
+
+Você transformou dias comuns em lembranças inesquecíveis.
+
+Seu sorriso é minha paz.
+
+Seu abraço é meu lugar favorito.
+
+Sua companhia é meu presente preferido.
+
+Se eu pudesse escolher uma música para tocar para sempre, ela teria o seu sorriso.
+
+Eu te amo hoje, amanhã e em todos os dias que ainda virão.
+
+❤️
+
+Com amor,
+
+João
+
+</div>
+
+</div>
+
+<footer>
+
+Feliz Dia dos Namorados ❤️
+
+</footer>
+
+</div>
+
+</div>
 
 <script>
-function play(img, title, music) {
-  document.getElementById("player").src = music;
+
+const inicio = new Date("2025-06-19");
+
+function atualizar(){
+
+const hoje = new Date();
+
+const dias =
+Math.floor((hoje - inicio)/(1000*60*60*24));
+
+document.getElementById("contador").innerHTML =
+dias + " dias vivendo nossa história ❤️";
+
 }
+
+atualizar();
+
 </script>
 
 </body>
 </html>
+```
