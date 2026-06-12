@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João & Raissa ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
+
+body{
+background:linear-gradient(to bottom,#2b000a,#120004,#000);
+color:white;
+min-height:100vh;
+}
+
+header{
+padding:40px 20px;
+text-align:center;
+}
+
+header h1{
+font-size:3rem;
+margin-bottom:10px;
+}
+
+header p{
+font-size:1.2rem;
+color:#ffb5c2;
+}
+
+.hero{
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:20px;
+}
+
+.hero img{
+width:300px;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,0,90,.4);
+}
+
+.player{
+margin-top:20px;
+width:90%;
+max-width:600px;
+background:#181818;
+padding:20px;
+border-radius:20px;
+}
+
+.song{
+font-size:2rem;
+font-weight:700;
+}
+
+.artist{
+color:#bbb;
+margin-top:5px;
+}
+
+.bar{
+height:5px;
+background:#444;
+margin-top:15px;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress{
+width:80%;
+height:100%;
+background:#ff4f8b;
+}
+
+.playlists{
+padding:40px 20px;
+}
+
+.playlists h2{
+margin-bottom:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.album{
+background:#181818;
+padding:15px;
+border-radius:20px;
+transition:.3s;
+cursor:pointer;
+}
+
+.album:hover{
+transform:translateY(-5px);
+}
+
+.album img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.album h3{
+margin-top:10px;
+}
+
+.album p{
+color:#bbb;
+font-size:.9rem;
+margin-top:5px;
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.modal img{
+max-width:90%;
+max-height:90%;
+border-radius:20px;
+}
+
+.carta{
+padding:40px 25px;
+max-width:900px;
+margin:auto;
+line-height:1.8;
+font-size:1.1rem;
+}
+
+.carta h2{
+margin-bottom:20px;
+}
+
+footer{
+text-align:center;
+padding:50px 20px;
+font-size:1.3rem;
+color:#ffb5c2;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎵 João & Raissa ❤️</h1>
+<p>Cada momento ao seu lado é minha música favorita</p>
+<p>Juntos desde 19/06/2025</p>
+</header>
+
+<section class="hero">
+<img src="foto1.jpg">
+
+<div class="player">
+<div class="song">Um Amor Puro</div>
+<div class="artist">Djavan</div>
+
+<div class="bar">
+<div class="progress"></div>
+</div>
+</div>
+</section>
+
+<section class="playlists">
+
+<h2>📀 Álbuns da Nossa História</h2>
+
+<div class="grid">
+
+<div class="album" onclick="abrir('foto4.jpg')">
+<img src="foto4.jpg">
+<h3>Flores para Você</h3>
+<p>Porque você merece todo amor do mundo.</p>
+</div>
+
+<div class="album" onclick="abrir('foto3.jpg')">
+<img src="foto3.jpg">
+<h3>Refúgio</h3>
+<p>Meu lugar favorito sempre será ao seu lado.</p>
+</div>
+
+<div class="album" onclick="abrir('foto2.jpg')">
+<img src="foto2.jpg">
+<h3>Nossa Vibe</h3>
+<p>Música, sorrisos e você.</p>
+</div>
+
+<div class="album" onclick="abrir('foto5.jpg')">
+<img src="foto5.jpg">
+<h3>Nosso Destino</h3>
+<p>O melhor ainda está por vir.</p>
+</div>
+
+<div class="album" onclick="abrir('foto1.jpg')">
+<img src="foto1.jpg">
+<h3>Pra Sempre</h3>
+<p>Cada capítulo ao seu lado vale a pena.</p>
+</div>
+
+</div>
+</section>
+
+<section class="carta">
+
+<h2>💌 Para a Raissa</h2>
+
+<p>
+Meu amor,
+</p>
+
+<br>
+
+<p>
+Algumas pessoas passam a vida inteira procurando alguém especial.
+Eu tive a sorte de encontrar você.
+</p>
+
+<br>
+
+<p>
+Entre risadas, aventuras, passeios, dias simples e momentos inesquecíveis,
+construímos uma história que guardarei para sempre.
+</p>
+
+<br>
+
+<p>
+Seu sorriso ilumina meus dias.
+Seu abraço me traz paz.
+Sua presença transforma qualquer momento em algo especial.
+</p>
+
+<br>
+
+<p>
+Obrigado por cada memória, cada conversa e cada sonho compartilhado.
+</p>
+
+<br>
+
+<p>
+Eu te amo hoje, amanhã e em todos os dias que ainda virão.
+❤️
+</p>
+
+<br>
+
+<p>
+Com amor,
+<br><br>
+<b>João ❤️</b>
+</p>
+
+</section>
+
+<footer>
+❤️ Feliz Dia dos Namorados ❤️
+</footer>
+
+<div class="modal" id="modal" onclick="fechar()">
+<img id="fotoModal">
+</div>
+
+<script>
+function abrir(foto){
+document.getElementById("modal").style.display="flex";
+document.getElementById("fotoModal").src=foto;
+}
+
+function fechar(){
+document.getElementById("modal").style.display="none";
+}
+</script>
+
+</body>
+</html>
