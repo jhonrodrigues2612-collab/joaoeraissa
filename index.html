@@ -8,7 +8,7 @@
 body {
   margin: 0;
   background: black;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
@@ -23,7 +23,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 
 /* TEXTO */
@@ -33,11 +33,12 @@ body {
   width: 100%;
   text-align: center;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   text-shadow: 0 0 10px black;
+  padding: 0 10px;
 }
 
-/* BOTÕES INVISÍVEIS (clique na tela) */
+/* ÁREAS DE CLIQUE */
 .btn {
   position: absolute;
   top: 0;
@@ -48,6 +49,14 @@ body {
 #prev { left: 0; }
 #next { right: 0; }
 
+/* PLAYER OCULTO */
+iframe {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
 </style>
 </head>
 
@@ -63,6 +72,8 @@ body {
 
   <div class="btn" id="prev" onclick="voltar()"></div>
   <div class="btn" id="next" onclick="avancar()"></div>
+
+  <iframe id="player" allow="autoplay"></iframe>
 
 </div>
 
@@ -82,6 +93,11 @@ const fotos = [
     img: "foto3.jpg",
     texto: "Você é meu lugar favorito ❤️",
     music: "https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1"
+  },
+  {
+    img: "foto4.jpg",
+    texto: "Se for com você, eu topo tudo ✨",
+    music: "https://www.youtube.com/embed/OPf0YbXqDm0?autoplay=1"
   }
 ];
 
@@ -91,8 +107,8 @@ function atualizar() {
   document.getElementById("img").src = fotos[i].img;
   document.getElementById("texto").innerText = fotos[i].texto;
 
-  // abre música
-  window.open(fotos[i].music, "_blank");
+  // troca música
+  document.getElementById("player").src = fotos[i].music;
 }
 
 function avancar() {
@@ -106,6 +122,9 @@ function voltar() {
   if (i < 0) i = fotos.length - 1;
   atualizar();
 }
+
+// inicia
+atualizar();
 </script>
 
 </body>
