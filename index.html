@@ -2,129 +2,187 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Nosso Álbum ❤️</title>
+<title>Nosso Spotify ❤️</title>
 
 <style>
 body {
   margin: 0;
-  background: black;
   font-family: Arial, sans-serif;
-  overflow: hidden;
-}
-
-/* STORY */
-.story {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-}
-
-.story img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.4s ease;
-}
-
-/* TEXTO */
-.texto {
-  position: absolute;
-  bottom: 80px;
-  width: 100%;
-  text-align: center;
+  background: #121212;
   color: white;
+}
+
+/* LAYOUT PRINCIPAL */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #000;
+  padding: 20px;
+}
+
+.logo {
+  color: #1db954;
   font-size: 20px;
-  text-shadow: 0 0 10px black;
-  padding: 0 10px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-/* ÁREAS DE CLIQUE */
-.btn {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
+/* PLAYLIST */
+.song {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  background: #181818;
+  transition: 0.3s;
 }
 
-#prev { left: 0; }
-#next { right: 0; }
+.song:hover {
+  background: #282828;
+}
+
+/* PLAYER PRINCIPAL */
+.main {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover {
+  width: 250px;
+  height: 250px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px black;
+}
+
+.title {
+  margin-top: 15px;
+  font-size: 22px;
+}
+
+.artist {
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+/* CONTROLES */
+.controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+button {
+  background: #1db954;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
 /* PLAYER OCULTO */
 iframe {
-  position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0;
+  height: 0;
   opacity: 0;
-  pointer-events: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="story">
+<div class="app">
 
-  <img id="img" src="foto1.jpg">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="logo">🎧 Nosso Spotify</div>
 
-  <div class="texto" id="texto">
-    Nosso primeiro momento ❤️
+    <div class="song" onclick="playSong(0)">Nosso começo ❤️</div>
+    <div class="song" onclick="playSong(1)">Momentos juntos 🌹</div>
+    <div class="song" onclick="playSong(2)">Você é meu lar ❤️</div>
+
   </div>
 
-  <div class="btn" id="prev" onclick="voltar()"></div>
-  <div class="btn" id="next" onclick="avancar()"></div>
+  <!-- MAIN -->
+  <div class="main">
 
-  <iframe id="player" allow="autoplay"></iframe>
+    <img id="cover" class="cover" src="foto1.jpg">
+
+    <div class="title" id="title">Nosso começo ❤️</div>
+    <div class="artist">Playlist especial</div>
+
+    <div class="controls">
+      <button onclick="prev()">⏮</button>
+      <button onclick="toggle()">▶/⏸</button>
+      <button onclick="next()">⏭</button>
+    </div>
+
+  </div>
 
 </div>
 
+<!-- PLAYER -->
+<iframe id="player" allow="autoplay"></iframe>
+
 <script>
-const fotos = [
+const songs = [
   {
     img: "foto1.jpg",
-    texto: "Nosso primeiro momento ❤️",
+    title: "Nosso começo ❤️",
     music: "https://www.youtube.com/embed/hh9WgYHRuhU?autoplay=1"
   },
   {
     img: "foto2.jpg",
-    texto: "Cada lembrança com você 🌹",
+    title: "Momentos juntos 🌹",
     music: "https://www.youtube.com/embed/dhYOPzcsbGM?autoplay=1"
   },
   {
     img: "foto3.jpg",
-    texto: "Você é meu lugar favorito ❤️",
+    title: "Você é meu lar ❤️",
     music: "https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1"
-  },
-  {
-    img: "foto4.jpg",
-    texto: "Se for com você, eu topo tudo ✨",
-    music: "https://www.youtube.com/embed/OPf0YbXqDm0?autoplay=1"
   }
 ];
 
-let i = 0;
+let current = 0;
 
-function atualizar() {
-  document.getElementById("img").src = fotos[i].img;
-  document.getElementById("texto").innerText = fotos[i].texto;
-
-  // troca música
-  document.getElementById("player").src = fotos[i].music;
+function loadSong() {
+  document.getElementById("cover").src = songs[current].img;
+  document.getElementById("title").innerText = songs[current].title;
+  document.getElementById("player").src = songs[current].music;
 }
 
-function avancar() {
-  i++;
-  if (i >= fotos.length) i = 0;
-  atualizar();
+function playSong(i) {
+  current = i;
+  loadSong();
 }
 
-function voltar() {
-  i--;
-  if (i < 0) i = fotos.length - 1;
-  atualizar();
+function next() {
+  current++;
+  if (current >= songs.length) current = 0;
+  loadSong();
 }
 
-// inicia
-atualizar();
+function prev() {
+  current--;
+  if (current < 0) current = songs.length - 1;
+  loadSong();
+}
+
+function toggle() {
+  document.getElementById("player").src = songs[current].music;
+}
+
+loadSong();
 </script>
 
 </body>
